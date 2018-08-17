@@ -1,0 +1,8 @@
+<h2>Assignments</h2>
+
+<ul>
+<% @assignments.each do |assignment| %>
+        <li>Name: <%= assignment.title %></li>
+        <li>Email: <%= assignment.instructor.name %></li>
+<% end %>
+</ul>

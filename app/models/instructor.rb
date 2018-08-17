@@ -8,9 +8,9 @@ class Instructor < ActiveRecord::Base
     has_secure_password
 
     validates :name, presence: true 
-    validates :type, presence: true 
+    validates :name, length: { minimum: 2 }
+   
     validates :password, presence: true 
-    validates :password, length: { in: 2..8 }
-    validates :instructor_id, presence: true 
-    validates :instructor_id, numericality: true 
+    validates :password, length: { in: 2..20 }
+   
 end 

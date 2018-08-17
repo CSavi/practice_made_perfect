@@ -5,3 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+students = Student.create!([{ name: 'Rowen', student_id: 1, level: 'Advanced', category: 'piano' }, { name: 'Trev', student_id: 2, level: 'Beginner', category: 'voice'}, { name: 'Benton', student_id: 3, level: 'advanced', category: 'cello'}])
+
+instructors = Instructor.create!([
+    { name: 'Mr. Allegro', email: 'allegro@test.com', password: 'password_1', category: 'piano'},
+    { name: 'Ms. Octave', email: 'octave@test.com', password: 'password_2', category: 'voice' },
+    { name: 'Ms. Motet', email: 'motet@test.com', password: 'password_3', category: 'cello' }
+])
+
+lessons = Lesson.create!([
+    { instructor_id: 1, student_id: 1, description: 'Theory', lesson_datetime: DateTime.new(2018, 07, 17)},
+    { instructor_id: 2, student_id: 1, description: 'Scales and Technique', lesson_datetime: DateTime.new(2018, 07, 22)},
+    { instructor_id: 3, student_id: 2, description: 'Chord Progressions', lesson_datetime: DateTime.new(2018, 07, 8)}
+])
+
+assignments = Assignment.create!([
+    { title: 'Assignment 1', lesson_hours: 23, lesson_planning_hours: 25, instructor_id: 1, created: DateTime.new(2018, 07, 17), updated: DateTime.new(2018, 8, 20)},
+    { title: 'Assignment 2', lesson_hours: 14, lesson_planning_hours: 20, instructor_id: 1, created: DateTime.new(2018, 12, 18), updated: DateTime.new(2018, 12, 22)},
+    { title: 'Assignment 3', lesson_hours: 2, lesson_planning_hours: 3, instructor_id: 1, created: DateTime.new(2018, 9, 10), updated: DateTime.new(2018, 9, 15)}
+])

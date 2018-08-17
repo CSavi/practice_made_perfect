@@ -1,0 +1,8 @@
+<% if logged_in? %>
+    <p><%= link_to 'Home Page', instructor_path(current_user) %></p>
+    <p><%= link_to 'Edit Profile', edit_instructor_path(current_user) %></p>
+    <p><%= link_to 'Delete Profile', current_user, method: :delete %></p>
+<% else %>
+    <p><%= link_to 'Log In', '/login' %>
+    <p><%= link_to 'Sign Up', new_instructor_path %></p>
+<% end %>

@@ -1,0 +1,35 @@
+<div class="form-div">
+    <%= form_for(@instructor) do |f| %>
+    <div>
+        <%= f.label 'Name' %>
+        <%= f.text_field :name %>
+    </div><br>
+
+    <div>
+         <%= f.label 'Category' %>
+         <%= f.text_field :category %>
+    </div>
+    <br>
+
+    <div>
+        <%= f.label 'Email' %>
+        <%= f.text_field :email %>
+    </div><br>
+    <div>
+        <%= f.label 'Password' %>
+        <%= f.password_field :password %>
+    </div>
+    <br>
+
+    <div>
+        <%= f.label 'Password Confirmation' %>
+        <%= f.password_field :password_confirmation %>
+    </div>
+
+        <%= f.submit %>
+    <br><br>
+
+    <%= link_to('Facebook login', '/auth/facebook') %>
+    <% end %>
+</div>
+

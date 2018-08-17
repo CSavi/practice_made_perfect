@@ -1,4 +1,5 @@
 class AssignmentsController < ApplicationController
+    before_action :find_assignment, only: [:show, :udpate, :destroy]
 
     def index
         @assignments = Assignment.all 
@@ -12,7 +13,6 @@ class AssignmentsController < ApplicationController
     end 
 
     def show 
-        find_assignment
     end 
 
     def edit 

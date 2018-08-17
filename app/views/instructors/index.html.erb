@@ -1,0 +1,10 @@
+<h2>Instructors Index</h2>
+
+<ul>
+<% @instructors.each do |instructor| %>
+        <li>Name: <%= instructor.name %><br>
+        Email: <%= instructor.email %><br>
+        Type: <%= instructor.category %></li><br></br>
+<% end %>
+</ul>
+

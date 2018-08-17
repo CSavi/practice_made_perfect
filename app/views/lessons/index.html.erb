@@ -1,0 +1,8 @@
+<h2>Lessons Index</h2>
+
+<ul>
+<% @lessons.each do |lesson| %>
+        <li>Date: <%= lesson.lesson_datetime %></label><br>
+        Description: <%= lesson.description %></li><br></br>
+<% end %>
+</ul>

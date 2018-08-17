@@ -1,4 +1,5 @@
 class LessonsController < ApplicationController
+    before_action :find_lesson, only: [:show, :udpate, :destroy]
 
     def index
         @lessons = Lesson.all 
@@ -9,10 +10,19 @@ class LessonsController < ApplicationController
     end 
 
     def create 
+        if logged_in?
+            @lesson = Lesson.new(lesson_params)
+            if @lesson.save
+                redirect_to lesson_path(@lesson)
+            else 
+                redirect_to new_lesson_path 
+            end 
+        else 
+            redirect_to '/login'
+        end 
     end 
 
     def show 
-        find_lesson
     end 
 
     def edit 
@@ -27,7 +37,7 @@ class LessonsController < ApplicationController
     private 
 
     def lesson_params
-        params.require(:lesson).permit(:name,)
+        params.require(:lesson).permit(:description, :lesson_datetime)
     end 
 
     def find_lesson

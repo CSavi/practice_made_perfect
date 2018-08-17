@@ -10,27 +10,27 @@
   </head>
 
   <body>
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+    <a id="top"></a>
+    <header>
+      <nav>
+        <p><center>
 
-      
-
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </div>
+          <%= link_to "Welcome", root_url %><br>
+          <%= link_to "Instructors", instructors_path %><br>
+          <%= link_to "Students", students_path %><br>
+          <%= link_to "Lessons", lessons_path %><br>
+          <div class="logged_in_info">
+          <% if logged_in? %>
+            <%= link_to "Assignments", assignments_path(current_user) %>
+            <%= link_to "Home Page", instructor_path(current_user) %>
+            <%= link_to "Log Out", logout_path, method: "delete" %>
+          <% end %>
+          </div>
+        
+        </center></p>
+      </nav>
+    </header>
+<div>
     <%= yield %>
   </body>
 </html>

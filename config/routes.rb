@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
+  #using resources macro to define restful routes
   resources :instructors
   resources :students
   resources :assignments

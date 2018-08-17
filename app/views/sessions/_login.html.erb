@@ -1,0 +1,18 @@
+<div class="form-info">
+    <%= form_for(:session) do |f| %>
+    <div>
+        <%= f.label 'Email' %>
+         <%= f.text_field :email %>
+    </div>
+    <br>
+    <div>
+        <%= f.label 'Password' %>
+        <%= f.password_field :password %>
+    </div>
+    <br>
+    <%= f.submit 'Log In' %>
+    <br><br>
+
+    or <%= link_to 'Login via Facebook', '/auth/facebook' %>
+<% end %>
+</div>

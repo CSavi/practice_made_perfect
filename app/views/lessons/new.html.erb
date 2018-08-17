@@ -1,0 +1,6 @@
+<h2>Create Lesson</h2>
+<%= form_for(@lesson) do |f| %>
+    <%= f.text_field :lesson_datetime %><br><br>
+    <%= f.text_field :description %><br><br>
+    <%= f.submit %>
+<% end %>

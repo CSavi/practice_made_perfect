@@ -1,0 +1,8 @@
+<p><strong>Student Name: </strong><%= @student.name.capitalize %><br>
+<strong>Category: </strong><%= @student.category.capitalize %><br>
+<strong>Level: </strong><%= @student.level.capitalize %><br><br>
+
+<% if current_user %>
+    <%= link_to 'Edit Student', edit_student_path(@student) %>
+<% end %>
+    
