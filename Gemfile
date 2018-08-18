@@ -30,6 +30,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'rack-flash3'
+gem 'bootstrap'
+gem 'jquery-rails'
 
 
 # Use ActiveStorage variant

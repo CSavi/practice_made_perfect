@@ -13,8 +13,8 @@ class SessionsController < ApplicationController
             session[:user_id] = @instructor.id
             redirect_to instructor_path(@instructor)
         else
-            @instructor = Instructor.find_by(email: params[:email])
-            if @instructor && @instructor.authenticate(params[:password])
+            @instructor = Instructor.find_by(email: params[:session][:email])
+            if @instructor && @instructor.authenticate(params[:session][:password])
                 session[:user_id] = @instructor.id 
                 redirect_to instructor_path(@instructor)
             else 
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
 
     def delete
         session.clear
-        redirect_to root_path
+        redirect_to '/'
     end 
 
     private 

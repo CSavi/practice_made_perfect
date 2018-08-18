@@ -1,0 +1,7 @@
+<h2>Create Assignment</h2>
+<%= form_for(@assignment) do |f| %>
+    <%= f.text_field :title %><br><br>
+    <%= f.text_field :lesson_hours %><br><br>
+    <%= f.text_field :lesson_planning_hours %><br><br>
+    <%= f.submit %>
+<% end %>
