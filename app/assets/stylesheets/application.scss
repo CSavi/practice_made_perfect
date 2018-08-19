@@ -1,1 +1,144 @@
-@import 'bootstrap'
+
+
+@import url('https://fonts.google.com/specimen/Raleway');
+
+/* CSS for main views */
+
+html, body {
+    font-family: 'Raleway';
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(32, 34, 34);
+    color: rgb(233, 232, 223);
+  }
+
+  div.container {
+    position: relative;
+    min-height: 100%;
+  }
+
+  a,a:visited {
+    text-decoration: none;
+    color: white;
+  }
+
+  .wrapper a {
+    background-color: #037;
+    padding: 1em 2em;
+    border-radius: 10px;
+  }
+
+  .wrapper a:hover {
+    background-color: #08a;
+    border-radius: 10px;
+  }
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li a {
+    display: block;
+    padding: 1em;
+    margin: 0;
+    color: rgb(233, 232, 223);
+    font-weight: bold;
+  }
+  
+  nav ul li a:hover {
+    background-color: #037;
+  }
+  nav ul li a::before, nav ul li a::after {
+    content: "> ";
+    color: rgb(233, 232, 223);
+  }
+  nav ul li a:hover::before {
+    content: "> ";
+    color:rgb(233, 232, 223);
+  }
+  nav ul li a:hover::after {
+    color: #037;
+  }
+
+  .wrapper {
+    margin: 0 auto;
+    max-width: 960px;
+    text-align: center;
+    background-color: #3F8EDD;
+    min-height: 300px;
+    overflow-wrap: break-word;
+  }
+  
+  .wrapper ul {
+    list-style-type: none;
+    padding: 0em 0.1em 1em 0.1em;
+    font-size: 1em;
+    word-spacing: 0.25em;
+    letter-spacing: 0.1em; 
+  }
+  
+  .wrapper ul li p {
+    font-size: 1em;
+    padding: 0.5em;
+    margin: 1em 0 0 0;
+  }
+  
+  .wrapper ul li p a {
+    padding: 0.5em 2em;
+  }
+  
+  h1, h2, h3 {
+    text-transform: capitalize;
+    background-color: rgb(233, 232, 223);
+    margin: 0 auto;
+    padding: 1em 0;
+    color: rgb(17, 17, 20);
+  }
+  
+  p {
+    font-size: 1.2em;
+    padding: 1em;
+  }
+  p.important {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-style: italic;
+    background-color: #6699EE;
+    color: #222;
+  }
+
+  .pic,
+  .info {
+    padding: 20px;
+    display: inline-block;
+    background-color: #eeeeee;
+    border-radius: 7px;
+    vertical-align: middle;
+    margin: 10px;
+}
+  
+  /* Error Display */
+  
+  .field_with_errors {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-style: italic;
+    background-color: #6699EE;
+    border: 1px solid #a00;
+    color: #a00;
+    font-size: 1.2em;
+  }
+
