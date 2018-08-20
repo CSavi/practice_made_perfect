@@ -7,4 +7,7 @@ class Student < ActiveRecord::Base
     validates :category, presence: true 
     validates :level, presence: true 
 
+    scope :highest_level, -> { where("students.level =='Advanced'")}
+    scope :moderate_level, -> { where("students.level =='Moderate'")}
+    scope :beginner_level, -> { where("students.level =='Beginner'")}
 end 

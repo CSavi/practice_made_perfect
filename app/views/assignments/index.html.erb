@@ -1,8 +1,17 @@
-<h2>Assignments</h2>
+<h2><center>ASSIGNMENTS</h2></center>
+<p class="important">Select by:</p><center><br>
+        <%= form_tag("/instructors/#{@instructor.id}/assignments", method: "get", id: "filter-form") do %>
+                <%= select_tag "hour_type", options_for_select(["Lesson Hours", "Lesson Planning Hours", "Created", "Updated"]), include_blank: true %>
+                <%= submit_tag "Filter" %>
+        <% end %></p></center>
 
-<ul>
+
+<ul><center>
 <% @assignments.each do |assignment| %>
-        <li>Name: <%= assignment.title %></li>
-        <li>Email: <%= assignment.instructor.name %></li>
+        <p>Title: <%= assignment.title %><br>
+        Lesson Hrs: <%= assignment.lesson_hours %><br>
+        Lesson Planning Hrs: <%= assignment.lesson_planning_hours %><br>
+        <%= link_to 'View/Edit Assignment', instructor_assignment_path(assignment.instructor, assignment) %>
 <% end %>
-</ul>
+</ul></center>
+

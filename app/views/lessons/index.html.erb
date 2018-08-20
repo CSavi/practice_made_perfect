@@ -1,8 +1,12 @@
-<h2>Lessons Index</h2>
+<h2><center>LESSONS</h2></center>
 
-<ul>
-<% @lessons.each do |lesson| %>
-        <li>Date: <%= lesson.lesson_datetime %></label><br>
-        Description: <%= lesson.description %></li><br></br>
+<p class='important'>Sorted by most recent date and time</p><br>
+
+<ul><center>
+<% @lessons.recent.each do |lesson| %>
+        Student: <%= lesson.student.name %><br>
+        Instructor: <%= lesson.instructor.name %><br>
+        Scheduled Date: <%= lesson.lesson_datetime.strftime('%b %d %Y at %H:%M %p')%><br>
+        <%= link_to 'View Description', lesson_path(lesson) %><br><br>
 <% end %>
-</ul>
+</ul></center>

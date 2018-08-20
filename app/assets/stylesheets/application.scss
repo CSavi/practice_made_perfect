@@ -19,19 +19,25 @@ html, body {
     min-height: 100%;
   }
 
-  a,a:visited {
-    text-decoration: none;
-    color: white;
+  a {
+    color: rgb(233, 232, 223);
+    background-color: transparent;
   }
 
+  h3 a {
+    color: rgb(32, 34, 34);
+    background-color: transparent;
+  }
+ 
+
   .wrapper a {
-    background-color: #037;
+    background-color: rgb(238, 184, 102);
     padding: 1em 2em;
     border-radius: 10px;
   }
 
   .wrapper a:hover {
-    background-color: #08a;
+    background-color:rgb(238, 184, 102);
     border-radius: 10px;
   }
 
@@ -57,7 +63,7 @@ nav ul li {
   }
   
   nav ul li a:hover {
-    background-color: #037;
+    background-color: white;
   }
   nav ul li a::before, nav ul li a::after {
     content: "> ";
@@ -68,14 +74,22 @@ nav ul li {
     color:rgb(233, 232, 223);
   }
   nav ul li a:hover::after {
-    color: #037;
+    color: white;
+  }
+
+  nav ul a:hover {
+    color: rgb(238, 184, 102);
+  }
+
+  ul a:hover { 
+    color: rgb(238, 184, 102);
   }
 
   .wrapper {
     margin: 0 auto;
     max-width: 960px;
     text-align: center;
-    background-color: #3F8EDD;
+    background-color: rgb(238, 184, 102);
     min-height: 300px;
     overflow-wrap: break-word;
   }
@@ -115,7 +129,7 @@ nav ul li {
     padding: 0;
     margin: 0;
     font-style: italic;
-    background-color: #6699EE;
+    background-color: rgb(238, 184, 102);
     color: #222;
   }
 
@@ -136,7 +150,7 @@ nav ul li {
     padding: 0;
     margin: 0;
     font-style: italic;
-    background-color: #6699EE;
+    background-color: rgb(238, 184, 102);
     border: 1px solid #a00;
     color: #a00;
     font-size: 1.2em;

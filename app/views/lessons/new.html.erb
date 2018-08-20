@@ -1,6 +1,9 @@
-<h2>Create Lesson</h2>
-<%= form_for(@lesson) do |f| %>
-    <%= f.text_field :lesson_datetime %><br><br>
-    <%= f.text_field :description %><br><br>
-    <%= f.submit %>
-<% end %>
+<h2><center>CREATE LESSON</h2></center><br><br>
+
+<center><%= form_for(@lesson) do |f| %>
+    Lesson Time: <%= f.datetime_field :lesson_datetime, ampm: true %><br><br>
+    Description: <%= f.text_field :description %><br><br>
+    Select Student: <%= f.collection_select(:student_id, @students, :id, :name, prompt: true) %><br><br>
+    Select Instructor: <%= f.collection_select(:instructor_id, @instructors, :id, :name, prompt: true) %><br><br>
+    <%= f.submit "Create"%>
+<% end %></center>

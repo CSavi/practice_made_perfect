@@ -4,13 +4,19 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   #using resources macro to define restful routes
-  resources :instructors
+
+  #nested route to associate assignment with instructor 
+  resources :instructors do 
+    resources :assignments
+  end 
+
   resources :students
   resources :assignments
   resources :lessons
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+
 
   delete '/logout' => 'sessions#delete'
 

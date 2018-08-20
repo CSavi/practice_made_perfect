@@ -13,5 +13,6 @@ class Lesson < ActiveRecord::Base
     validates :instructor_id, presence: true  
     validates :instructor_id, numericality: { only_integer: true }
      
-    
+    scope :recent, -> { order("lessons.lesson_datetime DESC")}
+   
 end

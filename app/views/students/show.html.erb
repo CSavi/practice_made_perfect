@@ -1,8 +1,11 @@
-<p><strong>Student Name: </strong><%= @student.name.capitalize %><br>
-<strong>Category: </strong><%= @student.category.capitalize %><br>
-<strong>Level: </strong><%= @student.level.capitalize %><br><br>
+<%= render partial: 'messages' %>
+
+<br><br>
+<h3><center><%= @student.name.capitalize %><br>
+<%= @student.category.capitalize %><br>
+<%= @student.level.capitalize %></h3></center><br><br>
 
 <% if current_user %>
-    <%= link_to 'Edit Student', edit_student_path(@student) %>
+    <center><%= link_to 'Edit Student', edit_student_path(@student) %></center>
 <% end %>
     

@@ -1,8 +1,7 @@
-<h1><center><%= @instructor.name.capitalize %>'s Homepage</h1>
-<div><center>
-    <%= @instructor.category.capitalize %>
-</div>
+<h1><center><%= @instructor.name.capitalize %>'s Homepage </h1>
+<div class='user_options'>
 
-<%= link_to 'Create Lesson', new_lesson_path %><br>
-<%= link_to 'Register Student', new_student_path %><br>
-<%= link_to 'Create Assignment', new_assignment_path %></p></center>
+    <h3><center><%= link_to 'Create Lesson', new_lesson_path %><h3>
+    <h3><%= link_to 'Register Student', new_student_path %></h3><br>
+    <h3><%= link_to 'Create Assignment', new_assignment_path %></h3></center>
+</div>

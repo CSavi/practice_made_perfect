@@ -16,13 +16,20 @@
     <header>
       <nav>
         <ul>
-          <br><%= link_to "Welcome", root_url %>  <%= link_to "Instructors", instructors_path %>   <%= link_to "Students", students_path %> <%= link_to "Lessons", lessons_path %>
-          <% if logged_in? %>
+          <br><%= link_to "Welcome", root_url %> &nbsp; 
+          <%= link_to "Instructors", instructors_path %> &nbsp;
+          <%= link_to "Students", students_path %> &nbsp;
+          <%= link_to "Lessons", lessons_path %>
+          <br><br>
+          <div class='auth'>
+          <% if !logged_in? %>
+            <h3><%= link_to "Log In", '/login' %> &nbsp;
+            <%= link_to "Sign Up", new_instructor_path %></h3>
+          <% else %>
             <%= link_to "Assignments", assignments_path(current_user) %><br><li></li><br>
             <%= link_to "Home Page", instructor_path(current_user) %> <%= link_to "Log Out", '/logout', method: "DELETE" %><br><li></li><br>
-          <% else %>
-            </li>
           <% end %>
+          <div>
         </ul>
       </nav>
     </header>
@@ -31,10 +38,5 @@
     <%= yield %>
 
   
-    <div class="footer">
-      <footer class="branding">
-        <small>&copy; 2018 <strong>PracticeMadePerfect</strong></small>
-      </footer>
-    </div>
   </body>
 </html>

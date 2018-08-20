@@ -1,0 +1,19 @@
+<h2><center><%= @assignment.title %> Display</h2>
+
+<%= render partial: 'messages' %>
+
+<br><br>
+<div><center>
+    <h5>Lesson Hrs: <%= @assignment.lesson_hours %></h5>
+    <h5>Lesson Planning Hrs: <%= @assignment.lesson_planning_hours %></h5>
+</div>
+<br><br>
+
+<br><br>
+<div><center>
+    <%= link_to "View All Assignments", instructor_assignments_path %> &nbsp; 
+    <%= link_to "Edit Assignment", edit_assignment_path %> &nbsp; 
+    <%= link_to "Delete Assignment", [@instructor, @assignment], method: :delete, data: { confirm: "Delete Assignment?" } %></p>
+</div></center>
+
+   

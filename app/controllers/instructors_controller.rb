@@ -1,6 +1,6 @@
 class InstructorsController < ApplicationController
     before_action :require_login, only: [:index]
-    before_action :find_instructor, only: [:show, :udpate, :destroy]
+    before_action :find_instructor, only: [:udpate]
 
     def index
         @instructors = Instructor.all 
@@ -21,16 +21,39 @@ class InstructorsController < ApplicationController
     end 
 
     def show
-        find_instructor
+        if logged_in?
+            find_instructor
+        else 
+            redirect_to root_path
+        end 
     end 
 
     def edit 
+        find_instructor
+        if !current_user
+            redirect_to root_path
+        end 
     end 
 
     def update 
+        if @instructor.update(instructor_params)
+            flash[:notice] = "Successfully updated profile"
+            redirect_to instructor_path(@instructor)
+        else 
+            flash[:alert] = @instructor.errors.full_messages
+            render :edit 
+        end
     end 
 
     def destroy
+        if current_user
+            find_instructor.destroy
+            flash[:notice] = "Successfully deleted profile"
+            session.delete :user_id
+            redirect_to root_path
+        else 
+            redirect_to '/login'
+        end 
     end 
 
     private 

@@ -1,4 +1,8 @@
 <h3><center>Log In</h3></center>
 
+<% if flash[:alert] %>
+    <div class='field_with_errors'><%= flash[:alert] %></div>
+<% end %>
+
 <%= render partial: 'login' %>
 

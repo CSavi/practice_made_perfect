@@ -1,7 +1,8 @@
-<div class="form-div">
+<br><br>
+<div class="form-div"><center>
     <%= form_for(@instructor) do |f| %>
     <div>
-        <%= f.label 'Name' %>
+        <%= f.label 'Name', name: 'name', required: true %>
         <%= f.text_field :name %>
     </div><br>
 
@@ -24,12 +25,12 @@
     <div>
         <%= f.label 'Password Confirmation' %>
         <%= f.password_field :password_confirmation %>
-    </div>
+    </div><br>
 
         <%= f.submit %>
     <br><br>
 
     <%= link_to('Facebook login', '/auth/facebook') %>
     <% end %>
-</div>
+</div></center>
 
