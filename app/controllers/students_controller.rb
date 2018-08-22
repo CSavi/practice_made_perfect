@@ -11,11 +11,13 @@ class StudentsController < ApplicationController
 
     def create 
         if logged_in?
-            @student = Student.new(student_params)
+            student_instructor
+            @student = @instructor.students.build(student_params)
             if @student.save
+                flash[:notice] = "Successfully saved new student"
                 redirect_to student_path(@student)
             else 
-                redirect_to new_student_path 
+                render :new
             end 
         else
             redirect_to '/login'
@@ -41,16 +43,15 @@ class StudentsController < ApplicationController
             flash[:notice] = "Successfully updated student"
             redirect_to student_path(@student)
         else 
-            flash[:notice] = @student.errors.full_messages 
             redirect_to edit_student_path
         end 
     end 
 
     def destroy
-        if logged_in?
+        if current_user
             Student.find(params[:id]).destroy
             flash[:notice] = "Successfully removed profile"
-            redirect_to root_path
+            redirect_to students_path
         else 
             redirect_to '/login'
         end 
@@ -64,5 +65,9 @@ class StudentsController < ApplicationController
 
     def find_student
         @student = Student.find(params[:id])
+    end 
+
+    def student_instructor
+        @instructor = Instructor.find_by(params[:instructor_id])
     end 
 end

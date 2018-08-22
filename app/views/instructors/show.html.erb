@@ -5,3 +5,11 @@
     <h3><%= link_to 'Register Student', new_student_path %></h3><br>
     <h3><%= link_to 'Create Assignment', new_assignment_path %></h3></center>
 </div>
+<br>
+
+
+<% if current_user %>
+    <p>&nbsp; <%= link_to 'Edit Profile', edit_instructor_path(@instructor) %><br><br>
+    &nbsp; <%= link_to "Delete Profile", [@instructor], method: :delete, data: { confirm: "Delete Profile?" } %></p>
+<% end %>
+<br><br>

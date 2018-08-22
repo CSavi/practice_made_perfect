@@ -1,35 +1,41 @@
 require 'pry'
 
 class LessonsController < ApplicationController
-    before_action :find_lesson, only: [:show, :udpate, :destroy]
+    before_action :find_lesson, only: [:show, :destroy]
 
     def index
         @lessons = Lesson.all 
     end 
     
     def new
-        @lesson = Lesson.new 
-        @students = Student.all
-        @instructors = Instructor.all
+        if !logged_in?
+            redirect_to '/login'
+        else 
+            @lesson = Lesson.new 
+            @students = Student.all
+            @instructors = Instructor.all
+        end 
     end 
 
     def create 
-      @lesson = Lesson.new(lesson_params)
+        lesson_instructor
+        @lesson = @instructor.lessons.build(lesson_params)
         if @lesson.save
-             flash[:notice] = "Lesson successfully saved"
-             redirect_to lesson_path(@lesson)
+            flash[:notice] = "Lesson successfully saved"
+            redirect_to lesson_path(@lesson)
         else 
+            flash[:notice] = "Please fill in all fields"
              redirect_to new_lesson_path 
         end 
     end 
 
     def show 
+        find_lesson
     end 
 
     def edit 
         if current_user
             find_lesson
-            @students = Student.all
         else
             redirect_to '/login'
         end 
@@ -41,12 +47,21 @@ class LessonsController < ApplicationController
             flash[:notice] = "Successfully updated"
             redirect_to lesson_path(@lesson)
         else 
-            render :edit 
+            flash[:notice] = "Cannot edit another instructor's lesson"
+            redirect_to edit_lesson_path 
         end 
     end 
 
-    # def destroy? #for future, admin privileges will be required to allow teachers to delete their lessons
-    # end 
+    def destroy
+        if current_user
+            find_lesson
+            @lesson.destroy
+            flash[:notice] = "Successfully removed lesson"
+            redirect_to lessons_path
+        else 
+            redirect_to '/login'
+        end 
+    end 
 
     private 
 
@@ -57,5 +72,9 @@ class LessonsController < ApplicationController
 
     def find_lesson
         @lesson = Lesson.find(params[:id])
+    end 
+
+    def lesson_instructor
+        @instructor = Instructor.find_by(id: session[:user_id])
     end 
 end

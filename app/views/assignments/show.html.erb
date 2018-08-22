@@ -9,11 +9,18 @@
 </div>
 <br><br>
 
+
+<% if current_user %>
+    <center><%= link_to 'Edit Assignment', edit_assignment_path(@assignment) %> &nbsp; 
+    <%= link_to "Delete Assignment", [@instructor, @assignment], method: :delete, data: { confirm: "Delete Assignment?" } %></p>
+<% end %>
 <br><br>
+
 <div><center>
     <%= link_to "View All Assignments", instructor_assignments_path %> &nbsp; 
-    <%= link_to "Edit Assignment", edit_assignment_path %> &nbsp; 
-    <%= link_to "Delete Assignment", [@instructor, @assignment], method: :delete, data: { confirm: "Delete Assignment?" } %></p>
 </div></center>
+
+
+
 
    

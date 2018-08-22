@@ -3,8 +3,8 @@
 <ul><center>
 <% @instructors.each do |instructor| %>
         Name: <%= instructor.name %><br>
-        Email: <%= instructor.email %><br>
-        Type: <%= instructor.category %><br></br>
+        Type: <%= instructor.category.capitalize if instructor.category %><br>
+        Total Students Scheduled: <%= instructor.students_scheduled %><br><br>
 <% end %>
 </ul></center>
 

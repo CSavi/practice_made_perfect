@@ -25,3 +25,5 @@ Views:
 Future Development:
 1. Enable students to gauge their performance and progress directly from instructor's assessments. Students can message with their instructors directly through their app. Students can record/upload songs, view sheet music added by instructor, and record their practice time for the day/week for instructors to review.
 2. Create challenges for students to compete based off their practice times. Award students who dedicate good practice time with badges.
+3. Create admin view -enable admin only to delete lessons
+for lesson_form add, link_to "Delete Lesson", [@instructor, @lesson], method: :delete, data: { confirm: "Delete Lesson?" }

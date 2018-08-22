@@ -9,8 +9,7 @@
 <ul><center>
 <% @assignments.each do |assignment| %>
         <p>Title: <%= assignment.title %><br>
-        Lesson Hrs: <%= assignment.lesson_hours %><br>
-        Lesson Planning Hrs: <%= assignment.lesson_planning_hours %><br>
+        Created: <%= assignment.created_at.strftime('%b %d %y') %> &nbsp; Updated: <%= assignment.updated_at.strftime('%b %d %y') %><br>
         <%= link_to 'View/Edit Assignment', instructor_assignment_path(assignment.instructor, assignment) %>
 <% end %>
 </ul></center>

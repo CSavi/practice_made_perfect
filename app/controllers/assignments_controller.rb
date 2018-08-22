@@ -9,7 +9,7 @@ class AssignmentsController < ApplicationController
                     @assignments = @instructor.assignments.most_lesson_hours
                 elsif params[:hour_type] == "Lesson Planning"
                     @assignments = @instructor.assignments.most_lesson_planning_hours
-                elsif params[:hour_type] == "Created"
+                elsif params[:hour_type] == ""
                     @assignments = @instructor.assignments.recently_created
                 else
                     @assignments = @instructor.assignments.recently_updated
@@ -48,7 +48,7 @@ class AssignmentsController < ApplicationController
         if logged_in?
             assignment_instructor
             @assignment = @instructor.assignments.find(params[:id])
-            if !current_user.assignments.find{|assignment| assignment == @assignment}
+            if !current_user.assignments.detect{|assignment| assignment == @assignment}
                 flash[:notice] = "Cannot view another instructor's assignments"
                 redirect_to root_path
             end
@@ -60,13 +60,14 @@ class AssignmentsController < ApplicationController
     def edit 
         assignment_instructor
         @assignment = @instructor.assignments.find(params[:id])
-        if !current_user.find{|assignment| assignment == @assignment}
+        if !current_user.assignments.detect{|assignment| assignment == @assignment}
             flash[:notice] = "Cannot view another instructor's assignments"
             redirect_to root_path
         end
     end 
 
     def update 
+        assignment_instructor
         @assignment = @instructor.assignments.find(params[:id])
         if @assignment.update(assignment_params)
             flash[:notice] = "Successfully updated"
@@ -100,6 +101,7 @@ class AssignmentsController < ApplicationController
     end 
 
     def assignment_instructor
-        @instructor = Instructor.find_by(params[:instructor_id])
+        @instructor = Instructor.find_by(id: session[:user_id])
     end 
+
 end

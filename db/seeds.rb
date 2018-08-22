@@ -21,7 +21,7 @@ lessons = Lesson.create!([
 ])
 
 assignments = Assignment.create!([
-    { title: 'Assignment 1', lesson_hours: 23, lesson_planning_hours: 25, instructor_id: 1, created: DateTime.new(2018, 07, 17), updated: DateTime.new(2018, 8, 20)},
-    { title: 'Assignment 2', lesson_hours: 14, lesson_planning_hours: 20, instructor_id: 1, created: DateTime.new(2018, 12, 18), updated: DateTime.new(2018, 12, 22)},
-    { title: 'Assignment 3', lesson_hours: 2, lesson_planning_hours: 3, instructor_id: 1, created: DateTime.new(2018, 9, 10), updated: DateTime.new(2018, 9, 15)}
+    { title: 'Assignment 1', lesson_hours: 23, lesson_planning_hours: 25, instructor_id: 1, created_at: DateTime.new(2018, 07, 17), updated_at: DateTime.new(2018, 8, 20)},
+    { title: 'Assignment 2', lesson_hours: 14, lesson_planning_hours: 20, instructor_id: 1, created_at: DateTime.new(2018, 12, 18), updated_at: DateTime.new(2018, 12, 22)},
+    { title: 'Assignment 3', lesson_hours: 2, lesson_planning_hours: 3, instructor_id: 1, created_at: DateTime.new(2018, 9, 10), updated_at: DateTime.new(2018, 9, 15)}
 ])

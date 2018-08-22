@@ -4,8 +4,7 @@
 
 <ul><center>
 <% @lessons.recent.each do |lesson| %>
-        Student: <%= lesson.student.name %><br>
-        Instructor: <%= lesson.instructor.name %><br>
+        Instructor: <%= lesson.instructor.name if lesson.instructor %><br>
         Scheduled Date: <%= lesson.lesson_datetime.strftime('%b %d %Y at %H:%M %p')%><br>
         <%= link_to 'View Description', lesson_path(lesson) %><br><br>
 <% end %>

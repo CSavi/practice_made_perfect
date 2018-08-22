@@ -8,7 +8,7 @@ class Assignment < ActiveRecord::Base
 
     scope :most_lesson_hours, -> { order("assignments.lesson_hours DESC")}
     scope :most_lesson_planning_hours, -> { order("assignments.lesson_planning_hours DESC")}
-    scope :recently_created, -> { order("assignments.created DESC")}
-    scope :recently_updated, -> { order("assignments.updated DESC")}
+    scope :recently_created, -> { order("assignments.created_at DESC")}
+    scope :recently_updated, -> { order("assignments.updated_at DESC")}
     
 end

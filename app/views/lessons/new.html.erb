@@ -1,9 +1,5 @@
-<h2><center>CREATE LESSON</h2></center><br><br>
+<h3><center>Create Lesson</h3></center>
 
-<center><%= form_for(@lesson) do |f| %>
-    Lesson Time: <%= f.datetime_field :lesson_datetime, ampm: true %><br><br>
-    Description: <%= f.text_field :description %><br><br>
-    Select Student: <%= f.collection_select(:student_id, @students, :id, :name, prompt: true) %><br><br>
-    Select Instructor: <%= f.collection_select(:instructor_id, @instructors, :id, :name, prompt: true) %><br><br>
-    <%= f.submit "Create"%>
-<% end %></center>
+<%= render partial: 'messages' %>
+
+<%= render partial: 'form', locals: {lesson: @lesson, submit_name: 'Create Lesson'} %>

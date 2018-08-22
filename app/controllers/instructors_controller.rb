@@ -1,5 +1,4 @@
 class InstructorsController < ApplicationController
-    before_action :require_login, only: [:index]
     before_action :find_instructor, only: [:udpate]
 
     def index
@@ -36,6 +35,7 @@ class InstructorsController < ApplicationController
     end 
 
     def update 
+        find_instructor
         if @instructor.update(instructor_params)
             flash[:notice] = "Successfully updated profile"
             redirect_to instructor_path(@instructor)
@@ -50,7 +50,7 @@ class InstructorsController < ApplicationController
             find_instructor.destroy
             flash[:notice] = "Successfully deleted profile"
             session.delete :user_id
-            redirect_to root_path
+            redirect_to instructors_path
         else 
             redirect_to '/login'
         end 
