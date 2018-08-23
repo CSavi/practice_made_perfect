@@ -8,9 +8,7 @@ Ruby 2.3.3p222
 
 * Deployment instructions
 You can install this app by running in your terminal git clone git@github.com:CSavi/practice_made_perfect.git
-Usage After cloning, change directory to Practice_Made_Perfect and run the following:
-
-'bundle install,' run 'rails server,' and then navigate to the server -https://localhost:3000.
+Usage After cloning, change directory to Practice_Made_Perfect and run the following: 'bundle install,' run 'rails server' and then navigate to the server -https://localhost:3000.
 
 * Testing
 Use credentials to log in found in the seed file or create a new user.
