@@ -5,6 +5,8 @@
 <p><center>Category: <%= @student.category.capitalize %><br>
 Level: <%= @student.level.capitalize %></p></center><br><br>
 
+
+
 <% if current_user %>
     <center><%= link_to 'Edit Student', edit_student_path(@student) %> &nbsp; 
     <%= link_to "Delete Student", [@instructor, @student], method: :delete, data: { confirm: "Delete Student?" } %></p>

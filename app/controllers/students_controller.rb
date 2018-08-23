@@ -27,6 +27,7 @@ class StudentsController < ApplicationController
 
     def show 
         find_student
+        @lessons = Lesson.all
     end 
 
     def edit 
