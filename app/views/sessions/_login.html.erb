@@ -3,12 +3,12 @@
     <%= form_for(:session) do |f| %>
     <div>
         <%= f.label 'Email' %>
-         <%= f.text_field :email %>
+         <%= f.text_field :email, :required => true %>
     </div>
     <br>
     <div>
         <%= f.label 'Password' %>
-        <%= f.password_field :password %>
+        <%= f.password_field :password, :required => true %>
     </div><br>
     <%= f.submit 'Log In' %>
     <br><br>

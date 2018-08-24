@@ -30,7 +30,7 @@
 <% @students.highest_level.each do |student| %>
         Student: <%= student.name.capitalize %><br>
         Category: <%= student.category.capitalize %><br>
-        Level: <%= student.level %><br>
+        Level: <%= student.level %><br><br>
         <% if logged_in? %>
         <%= link_to 'View/Edit Student', student_path(student) %><br><br>
 <% end %>

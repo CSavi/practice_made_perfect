@@ -9,13 +9,13 @@
 
     <div>
          <%= f.label 'Category' %>
-         <%= f.text_field :category %>
+         <%= f.text_field :category, :required => true %>
     </div>
     <br>
 
     <div>
         <%= f.label 'Level' %>
-        <%= f.select :level, [['Beginner'], ['Moderate'], ['Advanced']] %>
+        <%= f.select :level, [['Beginner'], ['Moderate'], ['Advanced']], :required => true %>
     </div><br>
 
 

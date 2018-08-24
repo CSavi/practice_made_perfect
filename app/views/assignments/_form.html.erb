@@ -2,7 +2,7 @@
 <br><br>
 <div class='form-div'><center>
     <%= form_for([instructor, assignment]) do |f| %>
-        Title: <%= f.text_field :title %><br><br>
+        Title: <%= f.text_field :title, :required => true %><br><br>
         Lesson Hrs: <%= f.text_field :lesson_hours %><br><br>
         Lesson Planning Hrs: <%= f.text_field :lesson_planning_hours %><br><br>
         <%= f.submit %>

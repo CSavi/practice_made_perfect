@@ -2,29 +2,29 @@
 <div class="form-div"><center>
     <%= form_for(@instructor) do |f| %>
     <div>
-        <%= f.label 'Name', name: 'name', required: true %>
+        <%= f.label 'Name', name: 'name', :required => true %>
         <%= f.text_field :name %>
     </div><br>
 
     <div>
          <%= f.label 'Category' %>
-         <%= f.text_field :category %>
+         <%= f.text_field :category, :required => true %>
     </div>
     <br>
 
     <div>
         <%= f.label 'Email' %>
-        <%= f.text_field :email %>
+        <%= f.text_field :email, :required => true %>
     </div><br>
     <div>
         <%= f.label 'Password' %>
-        <%= f.password_field :password %>
+        <%= f.password_field :password, :required => true %>
     </div>
     <br>
 
     <div>
         <%= f.label 'Password Confirmation' %>
-        <%= f.password_field :password_confirmation %>
+        <%= f.password_field :password_confirmation, :required => true %>
     </div><br>
 
         <%= f.submit %>

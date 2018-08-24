@@ -35,7 +35,7 @@ class AssignmentsController < ApplicationController
                 flash[:notice] = "Successfully saved new assignment"
                 redirect_to instructor_assignment_path(@instructor, @assignment)
             else 
-                flash[:notice] = @assignment.errors_full_messages
+                flash[:notice] = "Please fill in all required fields"
                 render :new 
             end 
         else
@@ -73,7 +73,6 @@ class AssignmentsController < ApplicationController
             flash[:notice] = "Successfully updated"
             redirect_to instructor_assignments_path(@instructor)
         else 
-            flash[:notice] = @assignment.errors_full_messages
             redirect_to edit_instructor_assignment_path(@instructor, @assignment)
         end 
     end 
