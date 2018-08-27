@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   #nested route to associate assignment with instructor 
   resources :instructors do 
-    resources :assignments
+    resources :assignments, shallow: true
   end 
 
   resources :students
