@@ -1,0 +1,11 @@
+<br>
+<div class='form-for'><center>
+    <%= form_for [@student, @lesson] do |f| %>
+        <%= f.label 'Lesson Time:' %>
+        <%= f.datetime_field :lesson_datetime, ampm: true %><br><br>
+        
+        <%= f.label 'Description:' %>
+        <%= f.text_area :description, :required => true %><br><br>
+    
+        <%= f.submit submit_name%>
+    <% end %></center>

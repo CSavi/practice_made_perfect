@@ -2,4 +2,9 @@
 
 <%= render partial: 'messages' %>
 
-<%= render partial: 'form', locals: {lesson: @lesson, submit_name: 'Create Lesson'} %>
+<% if @student %>
+    <%= render partial: 'student_filled_form', locals: {lesson: @lesson, student: @student, submit_name: 'Create Lesson'} %>
+<% else %>
+    <%= render partial: 'form', locals: {lesson: @lesson, submit_name: 'Create Lesson'} %>   
+<% end %>
+

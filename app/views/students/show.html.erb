@@ -5,6 +5,9 @@
 <p><center>Category: <%= @student.category.capitalize %><br>
 Level: <%= @student.level.capitalize %></p></center><br><br>
 
+<p><%= link_to 'Show Lessons', student_lessons_path(@student) %></p>
+<p><%= link_to 'Add Lesson', new_student_lesson_path(@student) %></p>
+
 
 
 <% if current_user %>

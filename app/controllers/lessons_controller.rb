@@ -2,9 +2,16 @@ require 'pry'
 
 class LessonsController < ApplicationController
     before_action :find_lesson, only: [:show, :destroy]
+    before_action :set_student
 
     def index
-        @lessons = Lesson.all 
+        if params[:student_id]
+            set_student
+            @lessons = @student.lessons if @student
+        else 
+            flash[:notice] = "All Students' Lessons"
+            @lessons = Lesson.all
+        end
     end 
     
     def new
@@ -20,12 +27,13 @@ class LessonsController < ApplicationController
     def create 
         lesson_instructor
         @lesson = @instructor.lessons.build(lesson_params)
+        @lesson.student = @student if @student
         if @lesson.save
             flash[:notice] = "Lesson successfully saved"
             redirect_to lesson_path(@lesson)
         else 
             flash[:notice] = "Please fill in all fields"
-             redirect_to new_lesson_path 
+             render :new 
         end 
     end 
 
@@ -63,6 +71,8 @@ class LessonsController < ApplicationController
         end 
     end 
 
+    
+
     private 
 
     def lesson_params
@@ -77,4 +87,9 @@ class LessonsController < ApplicationController
     def lesson_instructor
         @instructor = Instructor.find_by(id: session[:user_id])
     end 
+
+    def set_student
+        @student = Student.find_by(id: params[:student_id])
+    end
+
 end

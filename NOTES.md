@@ -27,4 +27,7 @@ Future Development:
 2. Create challenges for students to compete based off their practice times. Award students who dedicate good practice time with badges.
 3. Create admin view -enable admin only to delete lessons
 for lesson_form add, link_to "Delete Lesson", [@instructor, @lesson], method: :delete, data: { confirm: "Delete Lesson?" }
-4. Show each student's lessons on their show page
+4. Show each instructor's lessons through their show page
+5. Show each student's lessons on their show page
+students/:id/lessons/:id
+6. Use pundit for additional authorization records
