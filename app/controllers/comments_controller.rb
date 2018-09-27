@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
         
         respond_to do  |f|
             f.html { render :index }
-            f.json { render json: @comments }
+            f.json { render json: @comments.to_json }
         end 
     end 
 
@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
         if @comment.save 
             respond_to do |f| 
                 f.html { render :show, :layout => false }
-                f.json { render json: @comment }
+                f.json { render json: @comment.to_json }
             end 
         end  
     end 

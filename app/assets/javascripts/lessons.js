@@ -7,7 +7,7 @@ $(function() {
     $("#new_comment").on('submit', '.btn btn-primary', function(e) {
         $.ajax({
             type: "POST",
-            url: this.action,
+            url: this.action + ".json",
             data: $(this).serialize(),
             success: function(response) {
                 $("#comment_content").val(""); //empty textarea
@@ -22,7 +22,7 @@ $(function() {
     if (document.querySelector("div#lesson-comments")) {
         let lessonId = $("#lesson-comments").attr("data-lesson")
         
-        $.get("/lessons/" + lessonId + "/comments.json", function(data) {
+        $.get("/lessons/" + lessonId + ".json", function(data) {
             data.forEach(function(comment) {
     
                 $("#comment-box").append("<li class='h4 col-12 comment-box'>" + comment["content"] + "</li>")
