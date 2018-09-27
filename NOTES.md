@@ -31,3 +31,10 @@ for lesson_form add, link_to "Delete Lesson", [@instructor, @lesson], method: :d
 5. Show each student's lessons on their show page
 students/:id/lessons/:id
 6. Use pundit for additional authorization records
+
+
+The Ability to Submit a Comment
+1. Hijack the submit event of our form
+2. Take the form data and send it to the server as an AJAX post
+3. Take the data from the AJAX post request and create corresponding comment
+4. Send back HMTL/JSON/JS of the comment that was added and inject that comment into the comment OL on the DOM

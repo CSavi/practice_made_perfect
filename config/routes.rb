@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   end 
 
   resources :assignments
-  resources :lessons
+
+  resources :lessons do 
+    resources :comments
+  end
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

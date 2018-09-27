@@ -1,0 +1,8 @@
+
+
+
+<% @comments.each do |comment| %>
+    <p><%= comment.content %><br>
+    <a href="#" class="btn btn-link deleteComment" data-id="<%=comment.id %>" data-lesson-id="<%=comment.lesson_id %>">Delete Comment</a></p>
+    <% end %>
+<% end %>

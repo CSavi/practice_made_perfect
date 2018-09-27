@@ -3,6 +3,11 @@ class StudentsController < ApplicationController
 
     def index
         @students = Student.all 
+
+        respond_to do |f|
+            f.html
+            f.json {render json: @students }
+        end
     end 
     
     def new
@@ -26,8 +31,10 @@ class StudentsController < ApplicationController
 
 
     def show 
-        find_student
-        @lessons = Lesson.all
+        respond_to do |f|
+            f.html {render :show}
+            f.json {render json: @student }
+        end
     end 
 
     def edit 

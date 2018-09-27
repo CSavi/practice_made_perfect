@@ -1,17 +1,28 @@
 <%= render partial: 'messages' %>
 
-<br><br>
-<h3><center><%= @student.name.capitalize %></h3>
-<p><center>Category: <%= @student.category.capitalize %><br>
-Level: <%= @student.level.capitalize %></p></center><br><br>
+<br>
+<h3 class="studentName"><center><%= @student.name.capitalize %></h3>
+<a href="#" class="js-next-student" data-id="<%= @student.id%>"><center>Next Student</a>
+<p class="studentCategory"><center>Category: <%= @student.category.capitalize %>
+<p class="studentLevel">Level: <%= @student.level.capitalize %><br><br></p>
+<%= link_to 'SHOW LESSONS', student_lessons_path(@student) %>&nbsp; &nbsp; &nbsp;  <%= link_to 'ADD LESSON', new_student_lesson_path(@student) %></center></p>
 
-<p><%= link_to 'Show Lessons', student_lessons_path(@student) %></p>
-<p><%= link_to 'Add Lesson', new_student_lesson_path(@student) %></p>
-
-
+<script type="text/javascript" charset="utf-8">
+$(function() {
+    $(".js-next-student").on('click', function() {
+        var nextId = parseInt($(".js-next-student").attr("data-id")) + 1;
+        $.get("/students/" + nextId + ".json", function(data) {
+            $(".studentName").text(data["name"]);
+            $(".studentCategory").text(data["category"]);
+            $(".studentLevel").text(data["level"]);
+            $(".js-next-student").attr("data-id", data["id"]);
+        });
+    });
+});
+</script>
 
 <% if current_user %>
-    <center><%= link_to 'Edit Student', edit_student_path(@student) %> &nbsp; 
-    <%= link_to "Delete Student", [@instructor, @student], method: :delete, data: { confirm: "Delete Student?" } %></p>
+    <center><%= link_to 'Edit', edit_student_path(@student) %> &nbsp;|&nbsp;  
+    <%= link_to "Delete", [@instructor, @student], method: :delete, data: { confirm: "Delete Student?" } %></p>
 <% end %>
     
