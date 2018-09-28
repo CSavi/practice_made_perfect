@@ -15,11 +15,12 @@ class CommentsController < ApplicationController
         @comment = @lesson.comments.build(comments_params)
         if @comment.save 
             respond_to do |f| 
-                f.json { render json: @comment.to_json }
                 f.html { render :show, :layout => false }
+                f.json { render json: @comment, status: 201 }
             end 
         else 
-            render "lessons/show"
+            flash[:notice] = "Please try again."
+            render root_path
         end  
     end 
 

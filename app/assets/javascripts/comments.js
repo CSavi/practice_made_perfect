@@ -1,8 +1,3 @@
-$(document).ready(function(){
-    moreDescription();
-    deleteComment();
-  })
-
 $(function() {
     if (document.querySelector("div#lesson-comments")) {
         let lessonId = $("#lesson-comments").attr("data-lesson")
@@ -63,7 +58,6 @@ Comment.prototype.clearFormFields = function() {
 }
 
 
-
 $(function() {
     if (document.querySelector("div#lesson-comments")) {
         let lessonId = $("#lesson-comments").attr("data-lesson");
@@ -78,26 +72,21 @@ $(function() {
     }
 })
 
-let deleteComment = function() {
-    $("#submitted-comments").on('click', '.deleteComment', function(e) {
-        e.preventDefault();
-        let id = $(this).data("id");
-        let deleteUrl = "/comments/" + id;
-        $.ajax({
-            url: deleteUrl,
-            type: "POST", 
-            data: {"_method": "DELETE"}
-        })
-    })
-}
+// let deleteComment = function() {
+//     $("#submitted-comments").on('click', '.deleteComment', function(e) {
+//         e.preventDefault();
+//         let id = $(this).data("id");
+//         let deleteUrl = "/comments/" + id;
+//         $.ajax({
+//             url: deleteUrl,
+//             type: "POST", 
+//             data: {"_method": "DELETE"}
+//         })
+//     })
+// }
 
 
 
 
 
 
-
-   
-
-
-   

@@ -1,1 +1,11 @@
-<li><%= @comment.content %></li>
+# <li><%= @comment.content %></li>
+
+<h4>Comments</h4>
+    <% @lesson.comments.each do |comment| %>
+        <ul class="list-unstyled" id="comment-<%= comment.id %>">  
+            <li>
+                <strong><%= comment.content %>
+                <a href="#" class="btn btn-link deleteComment" data-id="<%= comment.id %>" data-lesson-id="<%= comment.lesson_id %>">Delete Comment</a>
+            </li>
+        </ul>
+    <% end %>

@@ -12,10 +12,9 @@ class LessonsController < ApplicationController
             flash[:notice] = "All Students' Lessons"
             @lessons = Lesson.all
         end
-
         respond_to do |f|
             f.html { render :index }
-            f.json { render @lessons }
+            f.json { render json: @lessons }
         end 
     end 
     
@@ -47,10 +46,11 @@ class LessonsController < ApplicationController
 
     def show 
         @lesson = Lesson.find(params[:id])
-        @comment = @lesson.comments.build
+        @comment = Comment.new 
+        @comments = @lesson.comments.build
         respond_to do |f|
             f.html { render :show }
-            f.json { render @lesson.to_json}
+            f.json { render json: @lesson }
         end 
     end 
 
