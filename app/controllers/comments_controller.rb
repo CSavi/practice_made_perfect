@@ -4,9 +4,8 @@ class CommentsController < ApplicationController
     def index 
         find_lesson
         @comments = @lesson.comments
-        
         respond_to do  |f|
-            f.html { render :index }
+            f.html { render 'index.html', :layout => false }
             f.json { render json: @comments.to_json }
         end 
     end 
@@ -16,9 +15,11 @@ class CommentsController < ApplicationController
         @comment = @lesson.comments.build(comments_params)
         if @comment.save 
             respond_to do |f| 
-                f.html { render :show, :layout => false }
                 f.json { render json: @comment.to_json }
+                f.html { render :show, :layout => false }
             end 
+        else 
+            render "lessons/show"
         end  
     end 
 

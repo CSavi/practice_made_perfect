@@ -35,7 +35,10 @@ class LessonsController < ApplicationController
         @lesson.student = @student if @student
         if @lesson.save
             flash[:notice] = "Lesson successfully saved"
-            redirect_to lesson_path(@lesson)
+            respond_to do |f|
+                f.json {render :json => @lesson}
+                f.html {redirect_to lesson_path(@lesson)}
+            end
         else 
             flash[:notice] = "Please fill in all fields"
              render :new 
