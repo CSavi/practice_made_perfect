@@ -1,8 +1,7 @@
 class CommentsController < ApplicationController 
-
+    before_action :find_lesson
     
     def index 
-        find_lesson
         @comments = @lesson.comments
         respond_to do  |f|
             f.html { render 'index.html', :layout => false }
@@ -11,12 +10,11 @@ class CommentsController < ApplicationController
     end 
 
     def create
-        find_lesson
         @comment = @lesson.comments.build(comments_params)
         if @comment.save 
             respond_to do |f| 
-                f.html { render :show, :layout => false }
-                f.json { render json: @comment, status: 201 }
+                f.html { render :index, :layout => false }
+                f.json { render json: @comment.to_json }
             end 
         else 
             flash[:notice] = "Please try again."

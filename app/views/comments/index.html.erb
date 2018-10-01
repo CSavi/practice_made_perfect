@@ -1,7 +1,10 @@
 
-<div class="row">
-    <% @comments.each do |comment| %>
-        <p><%= comment.content %><br>
-        <a href="#" class="btn btn-link deleteComment" data-id="<%=comment.id %>" data-lesson-id="<%=comment.lesson_id %>">Delete Comment</a></p>
-    <% end %>
-</div>
+
+    <ul>
+        <% @comments.each do |comment| %>
+            <li><%= comment.content %><br>
+            <a href="#" class="btn btn-link deleteComment" data-id="<%=comment.id %>" data-lesson-id="<%=comment.lesson_id %>">Delete Comment</a></li>
+        <% end %>
+    </ul>
+
+

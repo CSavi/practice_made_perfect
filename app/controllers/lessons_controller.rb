@@ -46,8 +46,8 @@ class LessonsController < ApplicationController
 
     def show 
         @lesson = Lesson.find(params[:id])
-        @comment = Comment.new 
-        @comments = @lesson.comments.build
+        @comment = @lesson.comments.build
+        @comments = @lesson.comments
         respond_to do |f|
             f.html { render :show }
             f.json { render json: @lesson }

@@ -11,28 +11,27 @@
     <center><%= link_to 'Edit Lesson', edit_lesson_path(@lesson) %> &nbsp;  
 <% end %>
 
-<div class="container lesson-box" id="lesson-comments" data-lesson="<%= @lesson.id %>">
-    <h4 class="lesson-title"></h4>
-    <ul id="comment-box">
-        <% @lesson.comments.each do |comment| %>
-            <li> <%= comment.content %> </li>
-        <% end %>
-    </ul>
 
 
-    <div class="comment-form">
-        <%= form_for([@lesson, @comment]) do |f| %>
-            <div class="field row">
-                <%= f.text_area :content, class: "h4 col-12" %><center>
-            </div><br>
+#<div class="container lesson-box" id="lesson-comments" data-lesson="<%= @lesson.id %>">
+<div id="commentSection">
+    <%= render partial: 'comments/comment' %>
+<div>
 
-            <%= f.hidden_field :lesson_id, value: @lesson.id %>
-            <div class="actions">
-                <center><%= f.submit "Add Comment", :class => 'btn btn-primary', id: 'btn btn-primary'%> 
-            </div>
-        <% end %>
-    </div>
 
+
+
+<div class="comment-form">
+    <%= form_for([@lesson, @comment]) do |f| %>
+        <div class="field row">
+            <%= f.text_area :content, class: "form-control commentText" %><center>
+        </div><br>
+
+        <%= f.hidden_field :lesson_id, value: @lesson.id %>
+        <div class="actions">
+            <center><%= f.submit "Add Comment", :class => 'btn btn-primary', id: 'btn btn-primary'%> 
+        </div>
+    <% end %>
 </div>
 
 <br><br>

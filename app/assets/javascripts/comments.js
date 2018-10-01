@@ -1,79 +1,52 @@
-$(function() {
-    if (document.querySelector("div#lesson-comments")) {
-        let lessonId = $("#lesson-comments").attr("data-lesson");
-        let commentId = $("#comment-<%= comment.id %>");
-        
-        $.get("/lessons/" + lessonId + "/comments.json", function(data) {  // AJAX get request 
-            data.forEach(function(comment) {
-    
-                $("#comment-box").append("<li class='h4 col-12'>" + comment["content"] + "</li>")
-            });
-        });
-    }
-})  
-
-
-$(function() {
-    
-    $("form#new_comment").on('submit', function(e) {
-        
-        // get data tp submit form correctly
-        e.preventDefault();
-        $.ajax({
-            method: "POST",                // this is a POST request
-            url: this.action ,           // this refers to whatever triggered the action
-            data: $(this).serialize(),   // convert json string
-            dataType: "json",
-            // success: function(response) {
-            //     $("#comment_content").val(""); //empty textarea
-            //     $("ul#comment-box").append(response);
-            // }
-        }).done(function(data) {
-            // instantiate a comment object
-            let comment = new Comment(data);
-debugger
-            comment.createCommentsDiv();
-
-            comment.clearFormFields();
-
-        });
-    });
-});
-
-function Comment(data) {
+const Comment = function(data) {
     this.id = data.id;
     this.content = data.content;
     this.lessonId = data.lesson_id;
-}
-
-Comment.prototype.createCommentsDiv = function(){
-    let html = "";
-    html +=
-    `<div class="list-unstyled" id="comment-<%= comment.id %>>
-        <p>${this.content}</p>
-        <a href="#" class="btn btn-link deleteComment" data-id="<%=comment.id %>" data-lesson-id="<%=comment.lesson_id %>">Delete Comment</a>
-    </div>`
-$("#submitted-comments").append(html);
 };
 
-Comment.prototype.clearFormFields = function() {
-    $("#comment_content").val("");
+
+Comment.prototype.deleteLink = function() {
+    const output = '<a class="btn btn-link deleteComment" data-method="delete" href="/lessons/:lesson_id/comments/' +  this.id + '">';
+        output += '</a>'
 }
 
 
+Comment.prototype.renderComment = function(){
+    let html = "";
+    html += '<ul class="list-unstyled" id="comment-" + comment.id >';
+    html += '<li>' + this.content + this.deleteLink() + '</li>';
+    html += '</ul>';
+    return html;
+};
 
-// let deleteComment = function() {
-//     $("#submitted-comments").on('click', '.deleteComment', function(e) {
-//         e.preventDefault();
-//         let id = $(this).data("id");
-//         let deleteUrl = "/comments/" + id;
-//         $.ajax({
-//             url: deleteUrl,
-//             type: "POST", 
-//             data: {"_method": "DELETE"}
-//         })
-//     })
-// }
+var attachListener = function() {
+    $(document).on('submit', 'form#new_comment', function(e) {
+        e.preventDefault();
+        let $form = $(this);
+        let action = $form.attr("action");
+        let params = $form.serialize();
+        
+        $.ajax({
+            url: action,
+            data: params,
+            dataType: "json",
+            type: "POST",
+            success: function(response) {
+                $("#comment_content").val("");
+                let comment = new Comment(response);
+                let attachComment = comment.renderComment();
+                $("#lessonComments").append(attachComent);
+            }
+        });
+    });
+}
+
+$(document).ready(function() {
+    attachListener();
+});
+
+
+
 
 
 

@@ -16,5 +16,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require comments.js
 //= require_tree .
 
