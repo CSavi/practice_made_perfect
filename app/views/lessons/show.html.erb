@@ -14,8 +14,11 @@
 <div class="container lesson-box" id="lesson-comments" data-lesson="<%= @lesson.id %>">
     <h4 class="lesson-title"></h4>
     <ul id="comment-box">
-        
+        <% @lesson.comments.each do |comment| %>
+            <li> <%= comment.content %> </li>
+        <% end %>
     </ul>
+
 
     <div class="comment-form">
         <%= form_for([@lesson, @comment]) do |f| %>
@@ -29,6 +32,7 @@
             </div>
         <% end %>
     </div>
+
 </div>
 
 <br><br>

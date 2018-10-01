@@ -1,6 +1,7 @@
 $(function() {
     if (document.querySelector("div#lesson-comments")) {
-        let lessonId = $("#lesson-comments").attr("data-lesson")
+        let lessonId = $("#lesson-comments").attr("data-lesson");
+        let commentId = $("#comment-<%= comment.id %>");
         
         $.get("/lessons/" + lessonId + "/comments.json", function(data) {  // AJAX get request 
             data.forEach(function(comment) {
@@ -13,7 +14,9 @@ $(function() {
 
 
 $(function() {
-    $("form#new_comment").on('submit', '.btn btn-primary', function(e) {
+    
+    $("form#new_comment").on('submit', function(e) {
+        
         // get data tp submit form correctly
         e.preventDefault();
         $.ajax({
@@ -28,7 +31,7 @@ $(function() {
         }).done(function(data) {
             // instantiate a comment object
             let comment = new Comment(data);
-
+debugger
             comment.createCommentsDiv();
 
             comment.clearFormFields();
@@ -46,7 +49,7 @@ function Comment(data) {
 Comment.prototype.createCommentsDiv = function(){
     let html = "";
     html +=
-    `<div class="row">
+    `<div class="list-unstyled" id="comment-<%= comment.id %>>
         <p>${this.content}</p>
         <a href="#" class="btn btn-link deleteComment" data-id="<%=comment.id %>" data-lesson-id="<%=comment.lesson_id %>">Delete Comment</a>
     </div>`
@@ -58,19 +61,6 @@ Comment.prototype.clearFormFields = function() {
 }
 
 
-$(function() {
-    if (document.querySelector("div#lesson-comments")) {
-        let lessonId = $("#lesson-comments").attr("data-lesson");
-        let commentId = $("#comment-<%= comment.id %>");
-        
-        $.getJSON("/lessons/" + lessonId + "/comments.json" + commentId, function(data) {
-            data.forEach(function(comment) {
-    
-                $("#comment-box").append("<li class='h4 col-12'>" + comment["content"] + "</li>")
-            });
-        });
-    }
-})
 
 // let deleteComment = function() {
 //     $("#submitted-comments").on('click', '.deleteComment', function(e) {

@@ -22,7 +22,7 @@ class InstructorsController < ApplicationController
     def show
         if logged_in?
             find_instructor
-            render json: @instructor, status: 200
+           # render json: @instructor, status: 200
         else 
             redirect_to root_path
         end 
