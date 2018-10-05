@@ -3,4 +3,5 @@ class LessonSerializer < ActiveModel::Serializer
 
   belongs_to :instructor
   belongs_to :student 
+  has_many :comments
 end

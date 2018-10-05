@@ -7,17 +7,20 @@ class LessonsController < ApplicationController
     def index
         if params[:student_id]
             set_student
+            @lesson = Lesson.find(params)
             @lessons = @student.lessons if @student
+            @comments = @lesson.comments 
+            respond_to do |f|
+                f.html { render :index, :layout => false }
+                f.json { render json: @lesson.to_json(include: :comment)} 
+            end 
         else 
             flash[:notice] = "All Students' Lessons"
             @lessons = Lesson.all
         end
-        respond_to do |f|
-            f.html { render :index }
-            f.json { render json: @lessons }
-        end 
     end 
     
+
     def new
         if !logged_in?
             redirect_to '/login'
@@ -45,12 +48,11 @@ class LessonsController < ApplicationController
     end 
 
     def show 
-        @lesson = Lesson.find(params[:id])
         @comment = @lesson.comments.build
         @comments = @lesson.comments
         respond_to do |f|
             f.html { render :show }
-            f.json { render json: @lesson }
+            f.json { render json: @lesson.to_json(include: :comment) }
         end 
     end 
 

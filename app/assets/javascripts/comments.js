@@ -5,16 +5,16 @@ const Comment = function(data) {
 };
 
 
-Comment.prototype.deleteLink = function() {
-    const output = '<a class="btn btn-link deleteComment" data-method="delete" href="/lessons/:lesson_id/comments/' +  this.id + '">';
-        output += '</a>'
-}
+// Comment.prototype.deleteLink = function() {
+//     let output = '<a class="btn btn-link deleteComment" data-method="delete" href="/lessons/:lesson_id/comments/' +  this.id + '">';
+//         output += '</a>'
+// }
 
 
 Comment.prototype.renderComment = function(){
     let html = "";
     html += '<ul class="list-unstyled" id="comment-" + comment.id >';
-    html += '<li>' + this.content + this.deleteLink() + '</li>';
+    html += '<li>' + this.content + '</li>';
     html += '</ul>';
     return html;
 };
@@ -32,10 +32,12 @@ var attachListener = function() {
             dataType: "json",
             type: "POST",
             success: function(response) {
+               console.log(response)
                 $("#comment_content").val("");
                 let comment = new Comment(response);
                 let attachComment = comment.renderComment();
-                $("#lessonComments").append(attachComent);
+                console.log(attachComment)
+                $("#commentSection").append(attachComment);
             }
         });
     });

@@ -2,38 +2,49 @@
 
 <p class='important'>Sorted by student level</p><br>
 
+<div id="li-switch">Click to reverse the order</div>
 
-<ul><center>
-<% @students.beginner_level.each do |student| %>
-        Student: <%= student.name.capitalize %><br>
-        Category: <%= student.category.capitalize %><br>
-        Level: <%= student.level %><br>
-        <% if logged_in? %>
-                <%= link_to 'View/Edit Student', student_path(student) %><br><br>
+        <ul><center>
+        <% @students.beginner_level.each do |student| %>
+                <li>Student: <%= student.name.capitalize %><br>
+                Category: <%= student.category.capitalize %><br>
+                Level: <%= student.level %><br>
+                <% if logged_in? %>
+                        <%= link_to 'View/Edit Student', student_path(student) %></li><br><br>
+                <% end %>
         <% end %>
-<% end %>
-</ul></center>
+        </ul></center>
 
-<ul><center>
-<% @students.moderate_level.each do |student| %>
-        Student: <%= student.name.capitalize %><br>
-        Category: <%= student.category.capitalize %><br>
-        Level: <%= student.level %><br>
-        <% if logged_in? %>
-        <%= link_to 'View/Edit Student', student_path(student) %><br><br>
-<% end %>
-        
-<% end %>
-</ul></center>
+        <ul><center>
+        <% @students.moderate_level.each do |student| %>
+                <li>Student: <%= student.name.capitalize %><br>
+                Category: <%= student.category.capitalize %><br>
+                Level: <%= student.level %><br>
+                <% if logged_in? %>
+                <%= link_to 'View/Edit Student', student_path(student) %></li><br><br>
+        <% end %>
+                
+        <% end %>
+        </ul></center>
 
-<ul><center>
-<% @students.highest_level.each do |student| %>
-        Student: <%= student.name.capitalize %><br>
-        Category: <%= student.category.capitalize %><br>
-        Level: <%= student.level %><br><br>
-        <% if logged_in? %>
-        <%= link_to 'View/Edit Student', student_path(student) %><br><br>
-<% end %>
-        
-<% end %>
-</ul></center>
+        <ul><center>
+        <% @students.highest_level.each do |student| %>
+                <li>Student: <%= student.name.capitalize %><br>
+                Category: <%= student.category.capitalize %><br>
+                Level: <%= student.level %><br>
+                <% if logged_in? %>
+                <%= link_to 'View/Edit Student', student_path(student) %></li><br><br>
+        <% end %>
+                
+        <% end %>
+        </ul></center>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+        $("#li-switch").on('click', function() {
+                var el = $('ul li').get().reverse();
+                $('ul').append(el);
+        });
+}
+</script>
+

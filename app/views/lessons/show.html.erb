@@ -10,15 +10,7 @@
 <% if current_user  %>
     <center><%= link_to 'Edit Lesson', edit_lesson_path(@lesson) %> &nbsp;  
 <% end %>
-
-
-
-#<div class="container lesson-box" id="lesson-comments" data-lesson="<%= @lesson.id %>">
-<div id="commentSection">
-    <%= render partial: 'comments/comment' %>
-<div>
-
-
+<br><br>
 
 
 <div class="comment-form">
@@ -35,6 +27,13 @@
 </div>
 
 <br><br>
+
+<div id="commentSection">
+    <%= render partial: 'comments/comment' %>
+<div>
+
+
+
 
 
 

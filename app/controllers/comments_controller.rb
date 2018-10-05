@@ -23,12 +23,12 @@ class CommentsController < ApplicationController
     end 
 
 
-    def delete 
+    def destroy
         # if @comment.instructor_id != current_user.id 
         #     redirect_to instructor_lessons_path(current_user), alert: "You may not delete this comment."
         # else
             @comment = Comment.find(params[:id])
-            @comment.delete
+            @comment.destroy
             render json: @comment 
         # end
     end 
