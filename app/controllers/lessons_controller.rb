@@ -5,20 +5,22 @@ class LessonsController < ApplicationController
     before_action :set_student
 
     def index
+        
         if params[:student_id]
             set_student
             @lessons = @student.lessons if @student
-            @lesson = Lesson.find(params[:id])
-            @comment = @lesson.comments.build
-            @comments = @lesson.comments
+           
+            @lesson = Lesson.find(params[:id]) if @lesson
+            @comment = @lesson.comments.build if @lesson
+            @comments = @lesson.comments if @lesson
             respond_to do |f|
                 f.html { render :index }
                 f.json { render json: @lesson.to_json(include: :comment)} 
             end 
         else 
+         
             flash[:notice] = "All Students' Lessons"
             @lessons = Lesson.all
-            
             @comment = @lesson.comments.build if @lesson
             @comments = @lesson.comments if @lesson
             respond_to do |f|

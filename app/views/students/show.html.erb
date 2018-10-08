@@ -3,25 +3,12 @@
 <br>
 <h3 class="studentName"><center><%= @student.name.capitalize %></h3>
 <a href="#" class="js-next-student" data-id="<%= @student.id%>"><center>Next Student</a>
+<a href="#" class="js-previous-student" data-id="<%= @student.id%>"><center>Previous Student</a>
 <p class="studentCategory"><center>Category: <%= @student.category.capitalize %>
-<p class="studentSongName"><center>Songs Performed: <%= @student.song_name %></p>
 <p class="studentLevel">Level: <%= @student.level.capitalize %><br><br></p>
 <%= link_to 'SHOW LESSONS', student_lessons_path(@student) %>&nbsp; &nbsp; &nbsp;  <%= link_to 'ADD LESSON', new_student_lesson_path(@student) %></center></p>
 
-<script type="text/javascript" charset="utf-8">
-$(function() {
-    $(".js-next-student").on('click', function() {
-        var nextId = parseInt($(".js-next-student").attr("data-id")) + 1;
-        $.get("/students/" + nextId + ".json", function(data) {
-            $(".studentName").text(data["name"]);
-            $(".studentCategory").text(data["category"]);
-            $(".studentSongName").text(data["song_name"]);
-            $(".studentLevel").text(data["level"]);
-            $(".js-next-student").attr("data-id", data["id"]);
-        });
-    });
-});
-</script>
+
 
 <% if current_user %>
     <center><%= link_to 'Edit', edit_student_path(@student) %> &nbsp;|&nbsp;  

@@ -5,6 +5,7 @@
 <ul><center>
   <% @lessons.recent.each do |lesson| %>
           Instructor: <%= lesson.instructor.name if lesson.instructor %><br>
+          
           Scheduled Date: <%= lesson.lesson_datetime.strftime('%b %d %Y at %H:%M %p')%><br>
           <div id="description-<%= lesson.id %>"><%= lesson.description %></div>
           <%= link_to 'View Description', lesson_path(lesson) %><br><br>
@@ -17,8 +18,9 @@
 
  <script type="text/javascript" charset="utf-8">
  $(function() {
-   $(".js-comments").on("click", function() {
+   $(".js-comments").on("click", function() { 
      var id = $(".js-comments").attr("data-id");
+     
      $.get("/lessons/" + id + "/comments.json", function(response) {
        response.forEach(function(comment) {
        $("#commentBody-" + id).append("<p>" + comment["content"] + "</p>")
