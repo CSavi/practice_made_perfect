@@ -2,10 +2,11 @@ class CommentsController < ApplicationController
     before_action :find_lesson
     
     def index 
-        @comments = @lesson.comments
-        respond_to do  |f|
-            f.html { render 'index.html', :layout => false }
-            f.json { render json: @comments.to_json }
+        find_lesson
+        @comments = @lesson.comments if @lesson
+        respond_to do |f| 
+            f.html { render :index, :layout => false }
+            f.json { render json: @comments.to_json}
         end 
     end 
 

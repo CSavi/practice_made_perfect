@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
         @students = Student.all 
         respond_to do |f|
             f.html
-            f.json {render json: @students }
+            f.json { render json: @student.to_json(include: :lesson)} 
         end
     end 
     

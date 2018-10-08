@@ -1,23 +1,38 @@
-const Comment = function(data) {
-    this.id = data.id;
-    this.content = data.content;
-    this.lessonId = data.lesson_id;
-};
+$(document).ready(function() {
+    attachListener();
+    renderComments();
+});
 
 
-// Comment.prototype.deleteLink = function() {
-//     let output = '<a class="btn btn-link deleteComment" data-method="delete" href="/lessons/:lesson_id/comments/' +  this.id + '">';
-//         output += '</a>'
-// }
+// const Comment = function(data) {
+//     this.id = data.id;
+//     this.content = data.content;
+//     this.lessonId = data.lesson_id;
+// };
 
 
-Comment.prototype.renderComment = function(){
-    let html = "";
-    html += '<ul class="list-unstyled" id="comment-" + comment.id >';
-    html += '<li>' + this.content + '</li>';
-    html += '</ul>';
-    return html;
-};
+
+function renderComments() {
+    if (document.querySelector("div#lesson-comments")) {
+        
+        var lessonId = $("#lesson-comments").attr("data-lesson")
+        $.get("/lessons/" + lessonId + "/comments.json", function(data) {
+            data.forEach(function(comment) {
+                $("#commentSection").append("<li class='col-12 comment box'>" + comment["content"] + "</li>")
+            })
+        })
+    }
+}
+
+//Which one (above or below for rendering)
+
+// Comment.prototype.renderComment = function(){
+//     let html = "";
+//     html += '<ul class="list-unstyled" id="comment-" + comment.id >';
+//     html += '<li>' + this.content + '</li>';
+//     html += '</ul>';
+//     return html;
+// };
 
 var attachListener = function() {
     $(document).on('submit', 'form#new_comment', function(e) {
@@ -43,9 +58,7 @@ var attachListener = function() {
     });
 }
 
-$(document).ready(function() {
-    attachListener();
-});
+
 
 
 

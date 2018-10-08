@@ -1,5 +1,5 @@
-<ul class="list-unstyled" id="comment-<%= @comment.id %>">
-    <% @lesson.comments.each do |comment| %>
-    <li><%= comment.content %></li>
-    <% end %>
-</ul>
+<div class="list-unstyled" id="lesson-comments" data-lesson="<%= @lesson.id %>">
+    <ul id="comment-box">
+      
+    </ul>
+</div>

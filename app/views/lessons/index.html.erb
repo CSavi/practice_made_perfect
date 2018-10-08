@@ -3,28 +3,25 @@
 <p class='important'>Sorted by most recent date and time</p><br>
 
 <ul><center>
-<% @lessons.recent.each do |lesson| %>
-        Instructor: <%= lesson.instructor.name if lesson.instructor %><br>
-        Scheduled Date: <%= lesson.lesson_datetime.strftime('%b %d %Y at %H:%M %p')%><br>
-        <div id="description-<%= lesson.id %>"><%= lesson.description %></div>
-        <%= link_to 'View Description', lesson_path(lesson) %><br><br>
-        <div id="body-<%= lesson.id %>"></div>
-        
-        <button class="js-more" data-id="<%= lesson.id %>">View Comments</button>
-        <br><br><br><br>
-<% end %>
+  <% @lessons.recent.each do |lesson| %>
+          Instructor: <%= lesson.instructor.name if lesson.instructor %><br>
+          Scheduled Date: <%= lesson.lesson_datetime.strftime('%b %d %Y at %H:%M %p')%><br>
+          <div id="description-<%= lesson.id %>"><%= lesson.description %></div>
+          <%= link_to 'View Description', lesson_path(lesson) %><br><br>
+          <div id="body-<%= lesson.id %>"></div>
+          
+          <button class="js-comments" data-id="<%= lesson.id %>">View Comments</button>
+          <br><br><br><br>
+  <% end %>
+</ul>
 
 
-<script type="text/javascript" charset="utf-8">
-$(function () {
-   $(".js-more").on('click', function() {
-     var id = $(this).data("id");
-     $.get("/lessons/" + id + "/comments" + ".json", function(data) {
-        $("#body-" + id).text(data);
-     });
-   });
-});
-</script>
+<div id="commentSection">
+    <%= render partial: 'comments/comment' %>
+<div>
+
+
+
 
 
 

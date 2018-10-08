@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-students = Student.create!([{ name: 'Rowen', student_id: 1, level: 'Advanced', category: 'piano' }, { name: 'Trev', student_id: 2, level: 'Beginner', category: 'voice'}, { name: 'Benton', student_id: 3, level: 'advanced', category: 'cello'}])
+students = Student.create!([{ name: 'Rowen', student_id: 1, level: 'Advanced', category: 'piano', song_name: 'May It Be'}, { name: 'Trev', student_id: 2, level: 'Beginner', category: 'voice', song_name: 'Crazy'}, { name: 'Benton', student_id: 3, level: 'advanced', category: 'cello', song_name: 'This My Sunshine'}])
 
 instructors = Instructor.create!([
     { name: 'Mr. Allegro', email: 'allegro@test.com', password: 'password_1', category: 'piano'},
