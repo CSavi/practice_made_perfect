@@ -15,18 +15,20 @@
   <% end %>
 </ul>
 
-<script type="text/javascript" charset="utf-8">
-$(function() {
-  $(".js-comments").on("click", function() {
-    var id = $(this).data("id");
-    $.get("/lessons/" + id + "/comments.json", function(data) {
-      var lessonData = data;
-      var commentText = "<li>" + lessonData['comments']['content'] + "</li>";
-      $("#commentBody-" + id).html(commentText);
-    });
-  });
-});
-</script>
+ <script type="text/javascript" charset="utf-8">
+ $(function() {
+   $(".js-comments").on("click", function() {
+     var id = $(".js-comments").attr("data-id");
+     $.get("/lessons/" + id + "/comments.json", function(response) {
+       response.forEach(function(comment) {
+       $("#commentBody-" + id).append("<p>" + comment["content"] + "</p>")
+       });
+     });
+   });
+ });
+ </script>
+
+
 
 
 
