@@ -24,7 +24,6 @@ class Instructor < ActiveRecord::Base
             instructor.password = SecureRandom.hex
             instructor.name = auth_hash[:info][:name]
         end 
-        binding.pry
     end 
    
 end 
