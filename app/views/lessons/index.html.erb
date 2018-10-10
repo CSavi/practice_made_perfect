@@ -19,7 +19,7 @@
  <script type="text/javascript" charset="utf-8">
  $(function() {
    $(".js-comments").on("click", function() { 
-     var id = $(".js-comments").attr("data-id");
+     var id = $(this).attr("data-id");
      
      $.get("/lessons/" + id + "/comments.json", function(response) {
        response.forEach(function(comment) {
