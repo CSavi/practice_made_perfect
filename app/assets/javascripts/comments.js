@@ -4,6 +4,7 @@ $(document).ready(function() {
 });
 
 
+
 const Comment = function(data) {
     this.id = data.id;
     this.content = data.content;
@@ -24,15 +25,9 @@ function renderComments() {
     }
 }
 
-//Which one (above or below for rendering)
 
-// Comment.prototype.renderComment = function(){
-//     let html = "";
-//     html += '<ul class="list-unstyled" id="comment-" + comment.id >';
-//     html += '<li>' + this.content + '</li>';
-//     html += '</ul>';
-//     return html;
-// };
+
+
 
 var attachListener = function() {
     $(document).on('submit', 'form#new_comment', function(e) {
@@ -47,11 +42,9 @@ var attachListener = function() {
             dataType: "json",
             type: "POST",
             success: function(response) {
-               console.log(response)
                 $("#comment_content").val("");
                 let comment = new Comment(response);
                 let attachComment = comment.renderComment();
-                console.log(attachComment)
                 $("#commentSection").append(attachComment);
             }
         });

@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resources :assignments
   end 
 
+  resources :instructors do 
+    resources :students 
+  end 
+
   resources :students do 
     resources :lessons 
   end 

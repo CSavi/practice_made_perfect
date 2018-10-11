@@ -2,9 +2,9 @@
 
 <br>
 <h3 class="studentName"><center><%= @student.name.capitalize %></h3>
-<a href="#" class="js-next-student" data-id="<%= @student.next%>"><center>Next Student</a>
-<a href="#" class="js-previous-student" data-id="<%= @student.previous%>"><center>Previous Student</a>
-<p class="studentCategory"><center>Category: <%= @student.category.capitalize %>
+<a href="#" class="js-next-student" data-id="<%= @student.id %>"><center>Next Student</a>
+<a href="#" class="js-previous-student" data-id="<%= @student.id %>"><center>Previous Student</a>
+<p class="studentCategory"><center>Category: <%= @student.category.capitalize %></p>
 <p class="studentLevel">Level: <%= @student.level.capitalize %><br><br></p>
 <%= link_to 'SHOW LESSONS', student_lessons_path(@student) %>&nbsp; &nbsp; &nbsp;  <%= link_to 'ADD LESSON', new_student_lesson_path(@student) %></center></p>
 

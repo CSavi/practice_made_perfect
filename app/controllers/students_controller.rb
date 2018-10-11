@@ -3,6 +3,8 @@ class StudentsController < ApplicationController
 
     def index
         @students = Student.all 
+        find_student
+        student_instructor
         respond_to do |f|
             f.html
             f.json { render json: @student.to_json(include: :lesson)} 
@@ -30,6 +32,7 @@ class StudentsController < ApplicationController
 
 
     def show 
+        find_student
         respond_to do |f|
             f.html {render :show}
             f.json {render json: @student }
@@ -73,7 +76,7 @@ class StudentsController < ApplicationController
     end 
 
     def find_student
-        @student = Student.find(params[:id])
+        @student = Student.find(params[:id]) if @student
     end 
 
     def student_instructor

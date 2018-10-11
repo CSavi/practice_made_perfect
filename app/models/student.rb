@@ -2,10 +2,6 @@ class Student < ActiveRecord::Base
 
     has_many :lessons
     has_many :instructors, through: :lessons 
-    belongs_to :instructor
-    scope :next, lambda {|id| where("id > ?", id).order("id ASC")}
-    # default_scope { order('id DESC')}
-    scope :previous, lambda {|id| where("id < ?", id).order("id DESC")}
 
     validates :name, presence: true 
     validates :category, presence: true 
@@ -15,14 +11,27 @@ class Student < ActiveRecord::Base
     scope :moderate_level, -> { where("students.level =='Moderate'")}
     scope :beginner_level, -> { where("students.level =='Beginner'")}
 
+    scope :next, lambda {|id| where("id > ?", id).order("id ASC")}
+    scope :previous, lambda {|id| where("id < ?", id).order("id DESC")}
 
+
+
+    # def next
+    #     Student.offset(self.id).first 
+    #     binding.pry
+    # end 
+
+    # def previous 
+    #     Student.offset(self.id).first
+    # end 
 
     def next
-        instructor.student.next(self.id).first 
-    end 
-
-    def previous 
-        instructor.student.previous(self.id).first
-    end 
+        self.class.where("id > ?", id).first
+    end
+    
+    def previous
+        self.class.where("id < ?", id).last
+    end
+    
 
 end 

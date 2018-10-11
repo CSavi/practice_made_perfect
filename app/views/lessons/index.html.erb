@@ -24,6 +24,8 @@
      $.get("/lessons/" + id + "/comments.json", function(response) {
        response.forEach(function(comment) {
        $("#commentBody-" + id).append("<p>" + comment["content"] + "</p>")
+          })
+         
        });
      });
    });

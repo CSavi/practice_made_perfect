@@ -5,7 +5,7 @@ $(function(){
 
 let nextStudent = function() {
     $(".js-next-student").on('click', function() {
-        var nextId = parseInt($(".js-next-student").attr("data-id")) + 1;
+        var nextId = $(this).data("data-id");
         $.get("/students/" + nextId + ".json", function(data) {
             $(".studentName").text(data["name"]);
             $(".studentCategory").text(data["category"]);
@@ -17,7 +17,7 @@ let nextStudent = function() {
 
 let previousStudent = function() {
     $(".js-previous-student").on('click', function() {
-        var previousId = parseInt($(".js-previous-student").attr("data-id")) - 1;
+        var previousId = $(this).attr("data-id");
         $.get("/students/" + previousId + ".json", function(data) {
             $(".studentName").text(data["name"]);
             $(".studentCategory").text(data["category"]);
