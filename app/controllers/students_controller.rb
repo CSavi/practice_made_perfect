@@ -32,7 +32,6 @@ class StudentsController < ApplicationController
 
 
     def show 
-        find_student
         respond_to do |f|
             f.html {render :show}
             f.json {render json: @student }

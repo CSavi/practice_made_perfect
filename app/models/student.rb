@@ -11,8 +11,8 @@ class Student < ActiveRecord::Base
     scope :moderate_level, -> { where("students.level =='Moderate'")}
     scope :beginner_level, -> { where("students.level =='Beginner'")}
 
-    scope :next, lambda {|id| where("id > ?", id).order("id ASC")}
-    scope :previous, lambda {|id| where("id < ?", id).order("id DESC")}
+    # scope :next, lambda {|id| where("id > ?", id).order("id ASC")}
+    # scope :previous, lambda {|id| where("id < ?", id).order("id DESC")}
 
 
 
@@ -25,13 +25,13 @@ class Student < ActiveRecord::Base
     #     Student.offset(self.id).first
     # end 
 
-    def next
-        self.class.where("id > ?", id).first
-    end
+    # def next
+    #     self.class.where("id > ?", id).first
+    # end
     
-    def previous
-        self.class.where("id < ?", id).last
-    end
+    # def previous
+    #     self.class.where("id < ?", id).last
+    # end
     
 
 end 
