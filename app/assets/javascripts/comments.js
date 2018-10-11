@@ -4,13 +4,11 @@ $(document).ready(function() {
 });
 
 
-
 const Comment = function(data) {
     this.id = data.id;
     this.content = data.content;
     this.lessonId = data.lesson_id;
 };
-
 
 
 function renderComments() {
@@ -24,9 +22,6 @@ function renderComments() {
         })
     }
 }
-
-
-
 
 
 var attachListener = function() {

@@ -27,8 +27,13 @@ html, body {
   h3 a {
     color: rgb(32, 34, 34);
     background-color: transparent;
+    padding-left: 2em;
   }
- 
+
+  h3.studentName {
+    padding-left: 5em;
+  }
+
 
   .wrapper a {
     background-color: rgb(238, 184, 102);
