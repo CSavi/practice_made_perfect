@@ -39,8 +39,11 @@ var attachListener = function() {
             success: function(response) {
            
                 $("#comment_content").val("");
-                $("ul#comment-box").append(response);
-              
+                $("#commentSection").append(response);
+                // let thisComment = new Comment(response);
+                // let attachComment = thisComment.renderComments();
+                // $("#comment-box").append(attachComment);
+
             }
         });
     });
