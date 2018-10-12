@@ -37,10 +37,10 @@ var attachListener = function() {
             dataType: "json",
             type: "POST",
             success: function(response) {
+           
                 $("#comment_content").val("");
-                let comment = new Comment(response);
-                let attachComment = comment.renderComment();
-                $("#commentSection").append(attachComment);
+                $("ul#comment-box").append(response);
+              
             }
         });
     });
