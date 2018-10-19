@@ -44,6 +44,16 @@ const attachSortListener = function() {
     });
 }
 
+// const attachSortListener = function() {
+//     var options = $("#comment-box");
+//     options.detach().sort(function(a,b) {
+//         var at = $(a).text();
+//         var bt = $(b).text();
+//         return (at > bt)? 1 : ((at < bt)? -1 : 0);
+//     })
+//     options.appendTo("#js-sort-comments")
+// }
+
 
 
 
@@ -60,10 +70,6 @@ const attachSortListener = function() {
 // }
 
 
-
-   
-    //lesson#show => json response render comments
-    //mdn reference 
 
 
 
