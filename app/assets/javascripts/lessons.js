@@ -11,26 +11,40 @@ class Lesson {
 
 $(document).ready(function() {
     attachSortListener();
+    // sortList();
 });
 
 
 const attachSortListener = function() {
-    $("#js-sort-comments").on('click', function(e) {
-        var $sort = this;
-        var $list = $("#js-sort-comments");
-        var $listUl = $("ul#comment-box");
-        $listUl.sort(function(a,b) {
-            var keyA = $(a).text();
-            var keyB = $(b).text();
-           
-            return (keyA > keyB) ? 1 : 0;
-        });
-        // $.each($listUl, function(index, row) {
-        //     $listUl.append(row);
-        // });
+    
+    $('#js-sort-comments').on('click', function(e) {
+        var id = $(this).data("id");
+        $.get("/lessons" + id + "/comments" + ".json", function(data) {
+            $(data).sort(function(a, b) {
+                return $(a).text() < $(b).text() ? 1 : -1;
+            });
+            $("data-lesson").text(data);
+        })
+        // var $sort = $(this);
+        // var action = $sort.attr("action");
+        // var params = $sort.serialize();
+
+        // $.ajax({
+        //     url: action,
+        //     data: params,
+        //     dataType: "json",
+        //     type: "GET",
+        //     success: function(data) {
+        //         $(data).sort(function(a,b) {
+        //             return $(a).text() < $(b).text() ? 1 : -1;
+        //         });
+        //     }
+        // })
         e.preventDefault();
     });
 }
+
+
 
 
 // const attachSortListener = function() {

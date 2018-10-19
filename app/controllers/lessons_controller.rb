@@ -63,6 +63,7 @@ class LessonsController < ApplicationController
         respond_to do |f|
             f.html { render :show }
             f.json { render json: @lesson }
+            f.json { render json: @comments }
         end 
     end 
 
