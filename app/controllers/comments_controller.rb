@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
         @comments = @lesson.comments if @lesson
         respond_to do |f| 
             f.html { render :index, :layout => false }
-            f.json { render json: @comments.to_json}
+            f.json { render json: @comments }
         end 
     end 
 
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
         if @comment.save 
             respond_to do |f| 
                 f.html { render :index, :layout => false }
-                f.json { render json: @comment.to_json }
+                f.json { render json: @comment }
             end 
         else 
             flash[:notice] = "Please try again."

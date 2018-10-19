@@ -15,7 +15,7 @@ class LessonsController < ApplicationController
             @comments = @lesson.comments if @lesson
             respond_to do |f|
                 f.html { render :index }
-                f.json { render json: @lesson.to_json(include: :comment)} 
+                f.json { render json: @lesson } 
             end 
         else 
          
@@ -25,7 +25,7 @@ class LessonsController < ApplicationController
             @comments = @lesson.comments if @lesson
             respond_to do |f|
                 f.html { render :index }
-                f.json { render json: @lesson.to_json(include: :comment)} 
+                f.json { render json: @lesson } 
             end 
         end
     end 
@@ -62,7 +62,7 @@ class LessonsController < ApplicationController
         @comments = @lesson.comments
         respond_to do |f|
             f.html { render :show }
-            f.json { render json: @lesson.to_json(include: :comment) }
+            f.json { render json: @lesson }
         end 
     end 
 

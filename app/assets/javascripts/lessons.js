@@ -9,6 +9,58 @@ class Lesson {
     }
 }
 
+$(document).ready(function() {
+    attachSortListener();
+});
+
+
+const attachSortListener = function() {
+    $("#js-sort-comments").on('click', function(e) {
+        var $sort = this;
+        var $list = $("#js-sort-comments");
+        var $listUl = $("ul#comment-box");
+        $listUl.sort(function(a,b) {
+            var keyA = $(a).text();
+            var keyB = $(b).text();
+           
+            return (keyA > keyB) ? 1 : 0;
+        });
+        // $.each($listUl, function(index, row) {
+        //     $listUl.append(row);
+        // });
+        e.preventDefault();
+    });
+}
+
+
+// const attachSortListener = function() {
+//     $("#js-sort-comments").on('click', function() {
+//         let lessonId = $(this).data("lesson")
+     
+//         $.get("/lessons/" + lessonId + "/comments.json", function(data) {
+//             $(data).sort(function(a,b) {
+//                 return $(a).html() < $(b).html() ? 1 : -1;
+//             });
+//         });
+//     });
+// }
+
+
+
+   
+    //lesson#show => json response render comments
+    //mdn reference 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
