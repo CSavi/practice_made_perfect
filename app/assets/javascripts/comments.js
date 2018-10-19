@@ -17,7 +17,7 @@ function renderComments() {
         var lessonId = $("#lesson-comments").attr("data-lesson")
         $.get("/lessons/" + lessonId + "/comments.json", function(data) {
             data.forEach(function(comment) {
-                $("#commentSection").append("<li class='col-12 comment box'>" + comment["content"] + "</li>")
+                $("#comment-box").append("<li class='col-12 comment box'>" + comment["content"] + "</li>")
             })
         })
     }

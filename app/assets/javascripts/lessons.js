@@ -11,63 +11,38 @@ class Lesson {
 
 $(document).ready(function() {
     attachSortListener();
-    // sortList();
+    
 });
 
 
 const attachSortListener = function() {
     
-    $('#js-sort-comments').on('click', function(e) {
-        var id = $(this).data("id");
-        $.get("/lessons" + id + "/comments" + ".json", function(data) {
-            $(data).sort(function(a, b) {
-                return $(a).text() < $(b).text() ? 1 : -1;
-            });
-            $("data-lesson").text(data);
-        })
-        // var $sort = $(this);
-        // var action = $sort.attr("action");
-        // var params = $sort.serialize();
-
-        // $.ajax({
-        //     url: action,
-        //     data: params,
-        //     dataType: "json",
-        //     type: "GET",
-        //     success: function(data) {
-        //         $(data).sort(function(a,b) {
-        //             return $(a).text() < $(b).text() ? 1 : -1;
-        //         });
-        //     }
-        // })
+    $(document).on('click', '#js-sort-comments', function(e) {
+    
         e.preventDefault();
+        var id = $(this).data("lesson");
+        $.get("/lessons/" + id + "/comments" + ".json", function(data) {
+       
+            data.sort(function(a, b){
+                a_up = a.content.toUpperCase()
+                b_up = b.content.toUpperCase()
+                if(a_up < b_up){
+                  return -1
+                }
+                if(a_up > b_up){
+                  return 1
+                }
+                return 0;
+              })
+           // replace data-lesson with text in data:
+           $("#comment-box").html("");
+           data.forEach(function(comment) {
+            $("#comment-box").append("<li>" + comment.content + "</li>")
+           })
+        })
     });
 }
 
-// const attachSortListener = function() {
-//     var options = $("#comment-box");
-//     options.detach().sort(function(a,b) {
-//         var at = $(a).text();
-//         var bt = $(b).text();
-//         return (at > bt)? 1 : ((at < bt)? -1 : 0);
-//     })
-//     options.appendTo("#js-sort-comments")
-// }
-
-
-
-
-// const attachSortListener = function() {
-//     $("#js-sort-comments").on('click', function() {
-//         let lessonId = $(this).data("lesson")
-     
-//         $.get("/lessons/" + lessonId + "/comments.json", function(data) {
-//             $(data).sort(function(a,b) {
-//                 return $(a).html() < $(b).html() ? 1 : -1;
-//             });
-//         });
-//     });
-// }
 
 
 
